@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Author" content="Kamweng,muyembe" />
+    <meta name="description" content="the page for infor input" />
+    <meta name="keyword" content="html,css" />
+    <link rel="stylesheet" href="index.css" />
+    <title>http//sign up</title>
+  </head>
+  <body class="signup_body">
+
+      <center><h1 class="vip" style="margin-top: 60px;margin-bottom: 3px;">sign up</h1></center>
+    
+  <center>  <div id="border">
+    <form action="http://localhost:3000/signin" class="form" method="post">
+
+
+
+      <label for="FN" class="names-names">first name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="text" id="FN" required autofocus class="sign_up_input" spellcheck="false" name="firstName"><br>
+
+
+
+      <label for="LN" class="names-names">last name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="text" id="LN" required  class="sign_up_input" spellcheck="false" name="lastName"><br>
+
+
+
+      <label for="SN" class="names-names">email:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="email" id="SN" required  class="sign_up_input" spellcheck="false" name="Email"><br>
+
+
+
+      <label for="phone" class="names-names" >phone number:</label><input type="number" id="phone" required class="sign_up_input" name="phoneNumber"><br>
+
+
+
+      <label for="pass" class="names-names" >password:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="password" id="pass" pattern="[A-Za-z].{8,}" required class="sign_up_input" name="password"><br>
+
+
+
+      <label for="age" class="names-names">date of birth:</label>&nbsp;&nbsp;
+      <input type="date" id="age" required value="2024-01-01" max="2026-12-30" min="1900-01-01" class="sign_up_input" name="dateOfBirth">
+
+
+
+      <h6 class="names-names">gender</h6>
+      <div class="rad" style="margin-top: -13px;">
+      <input value="male" type="radio" id="one" name="gender" required>
+      <label for="one">male</label>
+      <input value="female" type="radio" id="two" name="gender" required>
+      <label for="two">female</label>
+      <!-- <input type="hidden" id="genderInput" name="gender> -->
+      </div><button type="submit" class="select">submit</button>
+     </form>
+   </div>
+ </center>
+  </body>
+</html>
+ 
