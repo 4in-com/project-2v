@@ -1,0 +1,4663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="gift Kamwengo , russel muyembe" />
+    <meta name="description" content="the business site" />
+    <meta name="keyword" content="html,css" />
+    <link rel="icon" href="image/IMG_20220106_184048.jpg" type="image/jpg" />
+    <link rel="stylesheet" href="index.css" />
+    <title>http//www.buying and saling site.co</title>
+    <script src="./jquery3.7.1.js"></script>
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/fontawesome.min.css" />
+  </head>
+  <body class="no-x-scroll">
+    <div class="all-nav">
+      <h1>
+        <img
+          src="image/image2/pineapple (2).jpg"
+          alt=""
+          class="pineapple-nav"
+        />
+      </h1>
+      <form action="">
+        <input
+          type="search"
+          placeholder="search here"
+          class="input"
+          id="get"
+          required
+        /><button type="submit" class="button">search</button>
+      </form>
+      <div class="filter">
+        <form action="">
+          <label for="price_from"
+            >price from <i class="fa-solid fa-dollar"></i
+          ></label>
+          <input
+          onchange="minmum_()"
+            title="filter by price start"
+            type="number"
+            min="1"
+            max="900000"
+            style="width: 63px"
+            id="price_from"
+            class="filter_input"
+          />
+          <label for="price_to"
+            >&nbsp;To&nbsp;<i class="fa-solid fa-dollar"></i>&nbsp;</label
+          ><input
+            title="filter by price end"
+            type="number"
+            min="1"
+            max="900000"
+            style="width: 63px"
+            id="price_to"
+            class="filter_input"
+          />
+
+          withing:&nbsp;<select name="" id="" title="filter by location">
+            <option value="">my location</option>
+            <option value="">my country</option>
+            <option value="">my nbr country</option>
+            <option value="" selected>globel</option>
+          </select>
+          <button type="submit">submit</button>
+        </form>
+      </div>
+      <div class="ol">
+        <div class="a">
+          <a href="javascript:prevent" class="cart"
+            ><i class="fa-solid fa-shopping-cart"></i
+          ></a>
+          <h5 class="h-five">cart</h5>
+        </div>
+        <p class="number-add">4</p>
+        <div class="a">
+          <a href="restru.html"><i class="fa-solid fa-utensils"></i></a>
+          <h5 class="h-five">food</h5>
+        </div>
+        <div class="a">
+          <a href="audio.htm"><i class="fa-solid fa-film"></i></a>
+          <h5 class="h-five">video</h5>
+        </div>
+        <div class="a">
+          <a href=""><i class="fa-solid fa-book-open"></i></a>
+          <h5 class="h-five">books</h5>
+        </div>
+        <div class="a">
+          <a href="market.html"><i class="fa-solid fa-house"></i></a>
+          <h5 class="h-five">home</h5>
+        </div>
+
+        <button for="zoona" class="ball" id="bt" title="categories">
+          Categories
+        </button>
+      </div>
+    </div>
+
+    <div class="tald">
+      <ol class="pop">
+        <li><a class="cube" href="">all</a></li>
+        <li><a class="cube" href="">electronics</a></li>
+        <li><a class="cube" href="">fasion</a></li>
+        <li><a class="cube" href="">home/garden</a></li>
+        <li><a class="cube" href="">stationery</a></li>
+        <li><a class="cube" href="">sports</a></li>
+        <li><a class="cube" href="">toys</a></li>
+        <li><a class="cube" href="">pets</a></li>
+        <li><a class="cube" href="">vehicles</a></li>
+        <li><a class="cube" href="">beaut</a></li>
+      </ol>
+    </div>
+    <br />
+    <!-- ggggggggggggggggggggggggggggggggg -->
+
+    <div class="cart-bar">
+      <h3 class="your-cart">your cart</h3>
+      <div id="your-cart"></div>
+      <div class="total">
+        <h3 class="total-labol">total</h3>
+        <p class="total-amount">
+          <i class="fa-solid fa-dollar"></i>
+          <input id="real_price_hide" type="text" value="0" style="display: none;">
+          <p id="real_price">0</p>
+        </p>
+      </div>
+      <button class="buy-now">buy now</button>
+    </div>
+
+    <script>
+      
+     function tasting(product_nam, product_img, product_pri) {
+        var mainbuy = document.getElementById("your-cart");
+
+        let each_part = document.createElement("div");
+        each_part.setAttribute("class", "each-part");
+     
+        each_part.setAttribute("id", product_img);
+        mainbuy.appendChild(each_part);
+
+        let each_img = document.createElement("img");
+        each_img.setAttribute("class", "image-each");
+        each_img.src = product_img;
+        each_part.appendChild(each_img);
+
+        let each_p = document.createElement("p");
+        each_p.setAttribute("class", "name-product");
+        each_p.innerText = product_nam;
+        each_part.appendChild(each_p);
+
+        let each_price = document.createElement("p");
+        each_price.setAttribute("class", "price-per-product");
+        let each_i = document.createElement("i");
+        each_i.setAttribute("class", "fa-solid fa-dollar");
+        each_price.appendChild(each_i);
+
+        each_price.innerHTML += `&nbsp;${product_pri}`;
+        each_part.appendChild(each_price);
+
+        let each_input = document.createElement("input");
+        each_input.setAttribute("type", "number");
+        each_input.setAttribute("class", "number-increament");
+        each_input.setAttribute("value", 1);
+        each_input.setAttribute("min", 1);
+
+        each_part.appendChild(each_input);
+
+        let each_delete = document.createElement("div");
+        each_delete.setAttribute("class", "delete");
+        each_part.appendChild(each_delete);
+
+        let each_delete_i = document.createElement("i");
+        each_delete_i.setAttribute("class", "fa-solid fa-trash-alt");
+        each_delete_i.setAttribute("tok", product_pri);
+        each_delete.appendChild(each_delete_i);
+        
+        let ntok='';
+        each_input.addEventListener('change',()=>{
+          const inputs_=document.querySelectorAll('#your-cart input');
+          
+        let total=0;
+          total=parseFloat(product_pri)||0;
+          const di=eval(`${each_input.value}*${total}`);
+
+          each_delete_i.setAttribute("tok", ntok);
+          let main_price_in_hide = document.getElementById("real_price_hide").value+='+'+0;
+          let real_total=main_price_in_hide.toString();
+          let sec_real_total=eval(real_total);
+          let th_real_total=eval(`${sec_real_total}+${di}-${product_pri}`)
+          ntok+=th_real_total;
+          let main_price_in = document.getElementById("real_price").innerText=eval(th_real_total);
+        
+        
+        })
+
+        each_delete.addEventListener('click',()=>{
+        document.getElementById(product_img).remove();
+        const inputs_=document.querySelectorAll('#your-cart input');
+        let total=0;
+          total+=parseFloat(product_pri)||0;
+          let main_price_in_hide = document.getElementById("real_price_hide").value+='-'+each_delete_i.getAttribute('tok');
+          let real_total=main_price_in_hide.toString();
+          let main_price_in = document.getElementById("real_price").innerText=eval(real_total);
+        
+      })
+      const inputs_=document.querySelectorAll('#your-cart input');
+        let total=0;
+          total+=parseFloat(product_pri)||0;
+          let main_price_in_hide = document.getElementById("real_price_hide").value+='+'+total;
+          let real_total=main_price_in_hide.toString();
+          let main_price_in = document.getElementById("real_price").innerText=eval(real_total);
+        
+      
+      }
+
+   
+     function minmum_(){
+      let from_=document.getElementById('price_from').value;
+      document.getElementById('price_to').setAttribute('min',from_);
+     }
+    </script>
+
+    <!-- product name
+  product
+  praice
+  pay button -->
+
+    <!-- BAGS -->
+
+    <div id="main">
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/romans.jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (2).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black bag</div>
+          <div class="add">
+            <i
+              id="pre"
+              class="fa-solid fa-shopping-cart"
+              onclick="tasting('black bag','image/romans.jpg',150)"
+            ></i>
+            <div class="money">
+              <i id="pre" class="fa-solid fa-dollar"></i>
+              <p id="black back bag" value="150">150</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black bag</div>
+          <div class="add">
+            <i
+              id="pre"
+              class="fa-solid fa-shopping-cart"
+              onclick="tasting('black bag','image/backbag (3).jpg',1)"
+            ></i>
+            <div>
+              <i id="pre" class="fa-solid fa-dollar">10</i
+              ><input
+                type="number"
+                id="black bag"
+                value="10"
+                style="display: none"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart" onclick="tasting('black bag','image/backbag (3).jpg',3)"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="see">
+        <div class="try">
+          <img
+            class="miss"
+            src="image/backbag (3).jpg"
+            alt="focus"
+            title="focus"
+            class="taget"
+          />
+        </div>
+        <div class="kiss">
+          <div class="star">
+            <a href="market.html"
+              ><img src="image/phones (3).jpg" alt="" class="vase"
+            /></a>
+          </div>
+          <div class="back">black back bag</div>
+          <div class="add">
+            <i id="pre" class="fa-solid fa-shopping-cart"></i>
+            <div><i id="pre" class="fa-solid fa-dollar">150</i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(() => {
+        $(".cart-bar").hide();
+        $(".tald").hide();
+
+        $(".ball").click(function () {
+          $(".cart-bar").slideUp();
+          $(".tald").slideToggle();
+        });
+
+        $(".cart").click(function () {
+          $(".tald").slideUp();
+          $(".cart-bar").slideToggle();
+        });
+      });
+    </script>
+  </body>
+</html>
